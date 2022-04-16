@@ -12,6 +12,7 @@ import javax.persistence.Persistence;
 import it.uniroma3.siw.hw1.model.Allievo;
 import it.uniroma3.siw.hw1.model.Corso;
 import it.uniroma3.siw.hw1.model.Docente;
+import it.uniroma3.siw.hw1.model.Indirizzo;
 import it.uniroma3.siw.hw1.model.Societa;
 
 public class EnteMain {
@@ -26,6 +27,7 @@ public static void main(String[] args ) {
 		Allievo allievo1, allievo2, allievo3, allievo4, allievo5;
 		Docente docente1, docente2, docente3;
 		Corso corso1, corso2, corso3, corso4, corso5;
+		Indirizzo indirizzo;
 		
 		docente1 = new Docente();
 		docente2 = new Docente();
@@ -36,6 +38,7 @@ public static void main(String[] args ) {
 		corso4 = new Corso();
 		corso5 = new Corso();
 		societa = new Societa();
+		indirizzo = new Indirizzo();
 		allievo1 = new Allievo();
 		allievo2 = new Allievo();
 		allievo3 = new Allievo();
@@ -54,12 +57,8 @@ public static void main(String[] args ) {
 		List<Allievo> listaAllievi4 = new ArrayList<Allievo>();
 		List<Allievo> listaAllievi5 = new ArrayList<Allievo>();
 
-		/*
-		List<Corso> listaCorsiDocente1 = new ArrayList<Corso> ();
-		List<Corso> listaCorsiDocente2 = new ArrayList<Corso> ();
-		List<Corso> listaCorsiDocente3 = new ArrayList<Corso> ();
-		 */
-		// Crea 1 oggetto Societa, 5 oggetti Allievo, 3 oggetti Docente, 3 oggetti Corso
+		
+		// Crea 1 oggetto Societa, 5 oggetti Allievo, 3 oggetti Docente, 5 oggetti Corso
 		
 		docente1.setNome("Giorgio");
 		docente1.setCognome("Rossi");
@@ -104,14 +103,16 @@ public static void main(String[] args ) {
 		corso5.setDurataMesi(6);
 		corso5.setDocente(docente2);
 		
-		societa.setRagioneSociale("Societa di software swg");
-		societa.setVia("Borgognone");
-		societa.setNumeroCivico(16);
-		societa.setComune("Milano");
-		societa.setCap(20100);
-		societa.setProvincia("Milano");
-		societa.setTelefono("02345678");
-
+		indirizzo.setVia("Via Borgognona");
+		indirizzo.setNumeroCivico(16);
+		indirizzo.setComune("Milano");
+		indirizzo.setCap(20100);
+		indirizzo.setProvincia("Milano");
+		
+		societa.setRagioneSociale("Società di software SWK");
+		societa.setTelefono("003902456789");
+		societa.setIndirizzo(indirizzo);
+		
 		allievo1.setNome("Giovanni");
 		allievo1.setCognome("Rossi");
 		allievo1.setDataNascita(LocalDate.of(1996, 03, 31));
@@ -151,19 +152,7 @@ public static void main(String[] args ) {
 		allievo5.setLuogoNascita("Roma");
 		allievo5.setEmail("gianni@gmail.com");
 		allievo5.setSocieta(societa);
-		/*
-		 * NON SERVONO CI PENSA IL DB
-		docente1.setCorsi(listaCorsiDocente1);
-		docente1.addCorso(corso1);
-		docente1.addCorso(corso4);
 		
-		docente2.setCorsi(listaCorsiDocente2);
-		docente2.addCorso(corso2);
-		docente2.addCorso(corso5);
-		
-		docente3.setCorsi(listaCorsiDocente3);
-		docente3.addCorso(corso3);
-		*/
 		allievo1.setCorsi(listaCorsiAllievo1);
 		allievo1.addCorso(corso1);
 		allievo1.addCorso(corso2);
@@ -217,6 +206,7 @@ public static void main(String[] args ) {
 		em.persist (corso3);
 		em.persist (corso4);
 		em.persist (corso5);
+		em.persist (indirizzo);
 		em.persist (societa);
 		em.persist (allievo1);
 		em.persist (allievo2);

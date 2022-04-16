@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Societa {
@@ -14,27 +15,23 @@ public class Societa {
 	private Long id;
 	
 	@Column(nullable=false)
-	private String ragioneSociale;
-	
-	@Column(nullable=false)
-	private String via;
-	
-	@Column(nullable=false)
-	private Integer numeroCivico;
-	
-	@Column(nullable=false)
-	private String comune;
-	
-	@Column(nullable=false)
-	private  Integer cap;
-	
-	@Column(nullable=false)
-	private String provincia;
+	private String ragioneSociale;	
 	
 	@Column(nullable=false)
 	private String telefono;
 	
+	@OneToOne 
+	private Indirizzo indirizzo;
+	
 	// Metodi getter e setter
+
+	public Indirizzo getIndirizzo() {
+		return indirizzo;
+	}
+
+	public void setIndirizzo(Indirizzo indirizzo) {
+		this.indirizzo = indirizzo;
+	}
 
 	public String getTelefono() {
 		return telefono;
@@ -52,46 +49,7 @@ public class Societa {
 		this.ragioneSociale = ragioneSociale;
 	}
 
-	public String getVia() {
-		return via;
-	}
-
-	public void setVia(String via) {
-		this.via = via;
-	}
-
-	public Integer getNumeroCivico() {
-		return numeroCivico;
-	}
-
-	public void setNumeroCivico(Integer numeroCivico) {
-		this.numeroCivico = numeroCivico;
-	}
-
-	public String getComune() {
-		return comune;
-	}
-
-	public void setComune(String comune) {
-		this.comune = comune;
-	}
-
-	public Integer getCap() {
-		return cap;
-	}
-
-	public void setCap(Integer cap) {
-		this.cap = cap;
-	}
-
-	public String getProvincia() {
-		return provincia;
-	}
-
-	public void setProvincia(String provincia) {
-		this.provincia = provincia;
-	}
-
+	
 	public Long getId() {
 		return id;
 	}

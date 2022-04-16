@@ -44,6 +44,7 @@ public class Allievo {
 	@ManyToOne 
 	private Societa societa;
 
+	// Viene creata una tabella di join tra le chiavi corso e allievo
 	@ManyToMany(mappedBy="allievi")
 	private List<Corso> corsiAllievo;
 	

@@ -29,6 +29,7 @@ public class Corso {
 	@Column(nullable=false)
 	private Integer durataMesi;
 	
+	// Sulla tabella Corso è creata una colonna con FK docente
 	@ManyToOne
 	private Docente docente;
 	
