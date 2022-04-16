@@ -1,5 +1,6 @@
 package it.uniroma3.siw.hw1.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +21,7 @@ public class Societa {
 	@Column(nullable=false)
 	private String telefono;
 	
-	@OneToOne 
+	@OneToOne (cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private Indirizzo indirizzo;
 	
 	// Metodi getter e setter
