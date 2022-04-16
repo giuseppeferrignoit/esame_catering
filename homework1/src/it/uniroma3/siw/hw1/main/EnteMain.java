@@ -54,11 +54,11 @@ public static void main(String[] args ) {
 		List<Allievo> listaAllievi4 = new ArrayList<Allievo>();
 		List<Allievo> listaAllievi5 = new ArrayList<Allievo>();
 
-		
+		/*
 		List<Corso> listaCorsiDocente1 = new ArrayList<Corso> ();
 		List<Corso> listaCorsiDocente2 = new ArrayList<Corso> ();
 		List<Corso> listaCorsiDocente3 = new ArrayList<Corso> ();
-
+		 */
 		// Crea 1 oggetto Societa, 5 oggetti Allievo, 3 oggetti Docente, 3 oggetti Corso
 		
 		docente1.setNome("Giorgio");
@@ -151,6 +151,62 @@ public static void main(String[] args ) {
 		allievo5.setLuogoNascita("Roma");
 		allievo5.setEmail("gianni@gmail.com");
 		allievo5.setSocieta(societa);
+		/*
+		 * NON SERVONO CI PENSA IL DB
+		docente1.setCorsi(listaCorsiDocente1);
+		docente1.addCorso(corso1);
+		docente1.addCorso(corso4);
+		
+		docente2.setCorsi(listaCorsiDocente2);
+		docente2.addCorso(corso2);
+		docente2.addCorso(corso5);
+		
+		docente3.setCorsi(listaCorsiDocente3);
+		docente3.addCorso(corso3);
+		*/
+		allievo1.setCorsi(listaCorsiAllievo1);
+		allievo1.addCorso(corso1);
+		allievo1.addCorso(corso2);
+		allievo1.addCorso(corso4);
+		
+		allievo2.setCorsi(listaCorsiAllievo2);
+		allievo2.addCorso(corso1);
+		allievo2.addCorso(corso3);
+		
+		allievo3.setCorsi(listaCorsiAllievo3);
+		allievo3.addCorso(corso2);
+		allievo3.addCorso(corso3);
+		allievo3.addCorso(corso5);
+		
+		allievo4.setCorsi(listaCorsiAllievo4);
+		allievo4.addCorso(corso1);
+		allievo4.addCorso(corso3);
+		
+		allievo5.setCorsi(listaCorsiAllievo5);
+		allievo5.addCorso(corso1);
+		allievo5.addCorso(corso3);
+		
+		corso1.setAllievi(listaAllievi1);
+		corso1.addallievo(allievo1);
+		corso1.addallievo(allievo2);
+		corso1.addallievo(allievo4);
+		corso1.addallievo(allievo5);
+		
+		corso2.setAllievi(listaAllievi2);
+		corso2.addallievo(allievo1);
+		corso2.addallievo(allievo3);
+		
+		corso3.setAllievi(listaAllievi3);
+		corso3.addallievo(allievo2);
+		corso3.addallievo(allievo3);
+		corso3.addallievo(allievo4);
+		corso3.addallievo(allievo5);
+		
+		corso4.setAllievi(listaAllievi4);
+		corso4.addallievo(allievo1);
+		
+		corso5.setAllievi(listaAllievi5);
+		corso5.addallievo(allievo3);
 		
 		tx.begin ();
 		em.persist (docente1);
@@ -169,101 +225,7 @@ public static void main(String[] args ) {
 		em.persist (allievo5);
 		tx.commit ();
 		
-		tx.begin ();
-		allievo1.setCorsi(listaCorsiAllievo1);
-		allievo1.addCorso(corso1);
-		allievo1.addCorso(corso2);
-		allievo1.addCorso(corso4);
-		em.merge(allievo1);
-		tx.commit ();
-
-		tx.begin ();
-		allievo2.setCorsi(listaCorsiAllievo2);
-		allievo2.addCorso(corso1);
-		allievo2.addCorso(corso3);
-		em.merge(allievo2);
-		tx.commit ();
-
-		tx.begin ();
-		allievo3.setCorsi(listaCorsiAllievo3);
-		allievo3.addCorso(corso2);
-		allievo3.addCorso(corso3);
-		allievo3.addCorso(corso5);
-		em.merge(allievo3);
-		tx.commit ();
-
-		tx.begin ();
-		allievo4.setCorsi(listaCorsiAllievo4);
-		allievo4.addCorso(corso1);
-		allievo4.addCorso(corso3);
-		em.merge(allievo4);
-		tx.commit ();
-		
-		tx.begin ();
-		allievo5.setCorsi(listaCorsiAllievo5);
-		allievo5.addCorso(corso1);
-		allievo5.addCorso(corso3);
-		em.merge(allievo5);
-		tx.commit ();
-		
-		tx.begin ();
-		corso1.setAllievi(listaAllievi1);
-		corso1.addallievo(allievo1);
-		corso1.addallievo(allievo2);
-		corso1.addallievo(allievo4);
-		corso1.addallievo(allievo5);
-		em.merge(corso1);
-		tx.commit ();
-		
-		tx.begin ();
-		corso2.setAllievi(listaAllievi2);
-		corso2.addallievo(allievo1);
-		corso2.addallievo(allievo3);
-		em.merge(corso2);
-		tx.commit ();
-		
-		tx.begin ();
-		corso3.setAllievi(listaAllievi3);
-		corso3.addallievo(allievo2);
-		corso3.addallievo(allievo3);
-		corso3.addallievo(allievo4);
-		corso3.addallievo(allievo5);
-		em.merge(corso3);
-		tx.commit ();
-		
-		tx.begin ();
-		corso4.setAllievi(listaAllievi4);
-		corso4.addallievo(allievo1);
-		em.merge(corso4);
-		tx.commit ();
-		
-		tx.begin ();
-		corso5.setAllievi(listaAllievi5);
-		corso5.addallievo(allievo3);
-		em.merge(corso4);
-		tx.commit ();
-		
-		// Docenti
-		tx.begin ();
-		docente1.setCorsi(listaCorsiDocente1);
-		docente1.addCorso(corso1);
-		docente1.addCorso(corso4);
-		em.merge(docente1);
-		tx.commit ();
-		
-		tx.begin ();
-		docente2.setCorsi(listaCorsiDocente2);
-		docente2.addCorso(corso2);
-		docente2.addCorso(corso5);
-		em.merge(docente2);
-		tx.commit ();
-		
-		tx.begin ();
-		docente3.setCorsi(listaCorsiDocente3);
-		docente3.addCorso(corso3);
-		em.merge(docente3);
-		tx.commit ();
-		
+	
 		// CHIUSURA EM E EMF
 		em.close ();
 		emf.close ();
