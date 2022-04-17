@@ -9,12 +9,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(uniqueConstraints=@UniqueConstraint(columnNames={"partitaIva"}))
+@ NamedQuery (name =  "findAllDocenti", query = "SELECT d FROM Docente d")
 public class Docente {
 	
 	@Id
@@ -33,7 +32,7 @@ public class Docente {
 	@Column(nullable=false)
 	private String luogoNascita;
 	
-	@Column(nullable=false)
+	@Column(unique=true, nullable=false)
 	private Integer partitaIva;
 	
 	@OneToMany (mappedBy="docente", fetch=FetchType.EAGER) 

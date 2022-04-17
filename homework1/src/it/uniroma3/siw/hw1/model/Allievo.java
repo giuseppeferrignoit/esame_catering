@@ -11,11 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(uniqueConstraints=@UniqueConstraint(columnNames={"matricola"}))
 @ NamedQuery (name =  "findAllAllievi", query = "SELECT a FROM Allievo a")
 public class Allievo {
 	
@@ -35,7 +32,7 @@ public class Allievo {
 	@Column(nullable=false)
 	private String luogoNascita;
 	
-	@Column(nullable=false)
+	@Column(unique=true, nullable=false)
 	private String matricola;
 	
 	@Column(nullable=false)
