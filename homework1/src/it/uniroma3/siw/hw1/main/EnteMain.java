@@ -103,13 +103,13 @@ public static void main(String[] args ) {
 		corso5.setDurataMesi(6);
 		corso5.setDocente(docente2);
 		
-		indirizzo.setVia("Via Borgognona");
-		indirizzo.setNumeroCivico(16);
-		indirizzo.setComune("Milano");
-		indirizzo.setCap(20100);
-		indirizzo.setProvincia("Milano");
+		indirizzo.setVia("Via Nazionale");
+		indirizzo.setNumeroCivico(122);
+		indirizzo.setComune("Roma");
+		indirizzo.setCap(00100);
+		indirizzo.setProvincia("Roma");
 		
-		societa.setRagioneSociale("Società di software SWK");
+		societa.setRagioneSociale("Società di software AEG-SPA");
 		societa.setTelefono("003902456789");
 		societa.setIndirizzo(indirizzo);
 		
@@ -206,7 +206,6 @@ public static void main(String[] args ) {
 		em.persist (corso3);
 		em.persist (corso4);
 		em.persist (corso5);
-		em.persist (indirizzo);
 		em.persist (societa);
 		em.persist (allievo1);
 		em.persist (allievo2);
