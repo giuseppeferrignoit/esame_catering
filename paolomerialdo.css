@@ -1,0 +1,170 @@
+body {
+	margin: 10px;
+	background-color: darkslategrey;
+	font-family: sans-serif;
+}
+
+section {
+	
+}
+#titolo {
+	height: 30px;
+	background-color: lightskyblue;
+	border: 2px solid black;
+	border-radius: 10px;
+	margin: 10px;
+	padding: 10px;
+	text-align: center;
+}
+
+strong.titolo {
+	color: darkblue;
+	font-size: x-large;
+	margin: 10px;
+}
+
+div.indice {
+	background-color: lightskyblue;
+	border: 2px solid black;
+	border-radius: 10px;
+	height: 30px;
+	margin: 10px;
+	text-align: left;
+	padding:  10px;
+}
+
+.flex-container {
+	display: flex;
+	justify-content: space-between;
+	height: 290px;
+	margin: 10px;
+	margin-top: 5px;
+}
+
+
+
+div.dati {
+	background-color: lightskyblue;
+	border: 2px solid black;
+	border-radius: 10px;
+	width: calc(65% - 5px);
+	height: 280px;
+	margin: 0px;
+	margin-top: 5px;
+}
+
+div.foto {
+	background-color: lightskyblue;
+	border: 2px solid black;
+	border-radius: 10px;
+	width: calc(35% - 5px);
+	height: 280px;
+	margin: 0px;
+	margin-top: 5px;
+}
+
+.fotografia {
+	display: block;
+	margin: 0px auto;
+	text-align: center;
+}
+
+strong.position {
+	color: darkblue;
+	margin: 10px;
+}
+
+
+div.didattica {
+	background-color: white;
+	border: 2px solid black;
+	border-radius: 10px;
+	margin: 5px;
+}
+strong.teaching {
+	color: darkblue;
+	margin: 10px;
+}
+
+.elementoCV {
+	margin: 10;
+	font-size: small;
+}
+
+.ricerca {
+	margin: 10;
+	font-size: small;
+}
+
+.contatti {
+	margin: 10;
+	font-size: small;
+}
+
+div.research {
+	background-color: lightskyblue;
+	border: 2px solid black;
+	border-radius: 10px;
+	margin: 10px;
+	font-size: large;
+}
+
+strong.research {
+	color: darkblue;
+	margin: 10px;
+}
+
+.elementResearch {
+	font-size: medium;
+	margin: 10px;
+}
+
+.strong_item_research {
+	color: darkblue;
+	font-size: medium;
+	margin: 10px;
+}
+
+strong.lista_contatti {
+	color: darkblue;
+	margin: 10px;
+}
+
+div.other {
+	background-color: lightskyblue;
+	border: 2px solid black;
+	border-radius: 10px;
+	margin: 5px;
+}
+strong.innovation {
+	color: darkblue;
+	margin: 10px;
+	font-size: large;
+}
+
+.liste {
+}
+
+.link {
+	margin: 10;
+}
+
+footer {
+	background-color: lightskyblue;
+	border: 2px solid black;
+	border-radius: 10px;
+	height: 70px;
+	margin: 5px;
+	margin-bottom: 5px;
+}
+
+strong.social{
+	color: darkblue;
+	height: 10px;
+	margin: 5px;
+	font-size: large;
+}
+.elementSocial {
+	margin: 5;
+	padding-bottom: 30px;
+}
