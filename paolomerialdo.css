@@ -1,6 +1,6 @@
 body {
 	margin: 10px;
-	background-color: green;
+	background-color: slategrey;
 	font-family: sans-serif;
 }
 
@@ -9,7 +9,7 @@ section {
 }
 #titolo {
 	height: 30px;
-	background-color: floralwhite;
+	background-color: lightgrey;
 	border: 3px solid darkblue;
 	border-radius: 10px;
 	margin: 10px;
@@ -24,7 +24,7 @@ strong.titolo {
 }
 
 div.indice {
-	background-color: floralwhite;
+	background-color: lightgrey;
 	border: 3px solid darkblue;
 	border-radius: 10px;
 	height: 30px;
@@ -33,15 +33,22 @@ div.indice {
 	padding:  10px;
 }
 
+strong.el_indice {
+	color: darkslateblue;
+	font-size: 20px;
+	margin: 10px;
+	padding-right: 2px;
+}
+
 .flex-container {
 	display: flex;
 	justify-content: space-between;
-	height: 350px;
+	height: 360px;
 	margin: 10px;
 }
 
 div.dati {
-	background-color: floralwhite;
+	background-color: lightgrey;
 	border: 3px solid darkblue;
 	border-radius: 10px;
 	width: calc(60% - 3px);
@@ -53,35 +60,36 @@ div.dati {
 }
 
 div.foto {
-	background-color: floralwhite;
+	background-color: lightgrey;
 	border: 3px solid darkblue;
 	border-radius: 10px;
 	width: calc(40% - 3px);
 	height: 330px;
-	margin: 0px;
+	margin: 2px;
 	margin-top: 5px;
 	padding: 5px;
 }
 
 .fotografia {
 	display: block;
-	margin: 0px auto;
+	padding: 2px;
 	text-align: center;
 }
 
 strong.sottotitolo {
 	color: darkslateblue;
 	margin: 10px;
-	font-size: large;
+	font-size: 25px;
 }
 
 .elementoCV {
 	margin: 10;
 	font-size: medium;
+	text-align: justify;
 }
 
 div.sezione {
-	background-color: floralwhite;
+	background-color: lightgrey;
 	border: 3px solid darkblue;
 	border-radius: 10px;
 	margin: 10px;
@@ -96,7 +104,7 @@ div.sezione {
 }
 
 .titoloSezione {
-	background-color: lightgreen;
+	background-color: lightblue;
 	color: darkblue;
 	border: 3px solid darkblue;
 	border-radius: 10px;
@@ -107,7 +115,7 @@ div.sezione {
 
 strong.liste {
 	color: darkblue;
-	font-size: medium;
+	font-size: 20px;
 	margin: 20px;
 	padding: 5px;
 	text-align: justify;
@@ -116,12 +124,7 @@ strong.liste {
 .elementi_lista {
 
 	margin:  10px;
-	font-size: medium;
-}
-
-.link {
-	margin: 10px;
-	padding-left: 10px;
+	font-size: 20px;
 }
 
 .insegnamenti {
