@@ -43,28 +43,25 @@ strong.el_indice {
 	justify-content: space-between;
 	height: 360px;
 	margin: 10px;
+	margin-bottom: 15px;
 }
 
-div.dati {
+div.flex-dati {
 	background-color: whitesmoke;
 	border: 3px solid forestgreen;
 	border-radius: 10px;
-	width: calc(60% - 3px);
+	width: calc(60% - 10px);
 	height: 350px;
-	margin: 0px;
-	margin-top: 5px;
 	font-size: large;
 	padding: 5px;
 }
 
-div.foto {
+div.flex-foto {
 	background-color: whitesmoke;
 	border: 3px solid forestgreen;
 	border-radius: 10px;
-	width: calc(40% - 3px);
+	width: calc(40% - 10px);
 	height: 350px;
-	margin: 2px;
-	margin-top: 5px;
 	padding: 5px;
 }
 
