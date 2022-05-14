@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>  	
+	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="buffet.css"/>    
+	<title>Dati buffet</title>
+</head> 
+
+<body>
+	<header> 
+		<div id="titolo"><strong class="titolo"> Dati buffet inserito</strong></div>
+	</header>
+	
+	<div>
+		<span th:text="${buffet.nome}">Buffet generico</span>
+		<span th:text="${buffet.descrizione}">Descrizione generica</span>
+   	</div>
+
+    <footer><a href="/">Home</a></footer>
+</body>
+
+</html>

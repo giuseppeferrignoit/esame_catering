@@ -1,0 +1,82 @@
+package it.uniroma3.catering.controller;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import it.uniroma3.catering.model.Buffet;
+import it.uniroma3.catering.service.BuffetService;
+import it.uniroma3.catering.validator.BuffetValidator;
+
+@Controller
+public class BuffetController {
+	
+	@Autowired
+	private BuffetService buffetService;
+	
+	@Autowired
+	private BuffetValidator buffetValidator;
+	
+	/*
+	 * convenzione: get per le operazioni di lettura, post per gli aggiornamenti
+	 * il path è associato alle classi del dominio
+	*/
+	
+	@PostMapping("/buffet")
+	public String newBuffet(@Valid @ModelAttribute("buffet") Buffet buffet, Model model,
+			BindingResult bindingResult) {
+		
+		// Creo una entità Buffet dai dati di input della stringa HTTP usando i metodi Get
+		// I risultati della validazione sono riportati in BindingResult
+		/* 
+		 * Se non ci sono errori inserisce la ricorrenza di Buffet 
+		 * tramite la save del service 
+		 * */
+		
+		if (!bindingResult.hasErrors()) { // Se non ci sono errori
+			
+			this.buffetService.save(buffet);
+			model.addAttribute("buffet", this.buffetService.findById(buffet.getId()));
+			
+			// Ogni metodo ritorna la stringa col nome della vista successiva
+			// se NON ci sono errori si va alla form di visualizzazione dati inseriti
+			return "buffet.html"; 
+		}
+		else
+			// se ci sono errori si rimanda alla form iniziale
+			return "buffetForm.html"; 
+	}
+
+	// richiede un singolo buffet tramite id
+	@GetMapping("/buffet/{id}")
+	public String getBuffet(@PathVariable("id")Long id, Model model) { 
+		// id è una variabile associata al path
+		Buffet buffet = buffetService.findById(id);
+		model.addAttribute("buffet", buffet);
+		// ritorna la form con i dati dell'entità richiesta
+		return "buffet.html"; 
+	}
+	
+	// richiede tutti i buffets, non c'è id
+	@GetMapping("/buffets")
+	public String getBuffets(Model model) {
+		List<Buffet> buffets = buffetService.findAll();
+		model.addAttribute("buffets", buffets);
+		return "buffets.html";
+	}
+	
+	@GetMapping("/buffetForm/{id}")
+	public String getBuffet(Model model) {
+		model.addAttribute("buffet", new Buffet());
+		return "buffetForm.html";
+	}
+}

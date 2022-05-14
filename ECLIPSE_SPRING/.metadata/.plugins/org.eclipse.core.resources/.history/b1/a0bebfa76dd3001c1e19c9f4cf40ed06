@@ -1,0 +1,67 @@
+package it.uniroma3.catering.controller;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import it.uniroma3.catering.model.Buffet;
+import it.uniroma3.catering.service.BuffetService;
+import it.uniroma3.catering.validator.BuffetValidator;
+
+@Controller
+public class BuffetController {
+	
+	@Autowired
+	private BuffetService bs;
+	
+	@Autowired
+	private BuffetValidator bv;
+	
+	/*
+	 * convenzione: get per le operazioni di lettura, post per gli aggiornamenti
+	 * il path è associato alle classi del dominio
+	*/
+	
+	@PostMapping("/buffet")
+	public String addPersona(@Valid @ModelAttribute("buffet") Buffet buffet, 
+			BindingResult bindingResult, Model model) {
+		if (!bindingResult.hasErrors()) {
+			this.bs.save(buffet);
+			model.addAttribute("buffet", bs.findById(buffet.getId()));
+			return "buffet.html";
+		}
+		else
+			return "buffetForm.html";
+	}
+
+	// richiede tutte le persone, non c'è id
+	@GetMapping("/buffet")
+	public String getPersone(Model model) {
+		List<Buffet> buffets = bs.findAll();
+		model.addAttribute("buffets", buffets);
+		return "persone.html";
+	}
+	
+	// richiede tutte le persone, non c'è id
+	@GetMapping("/buffet/{id}")
+	public String getPersona(@PathVariable("id")Long id, Model model) {
+		Buffet buffet = bs.findById(id);
+		model.addAttribute("buffet", buffet);
+		return "persona.html";
+	}
+	
+	@GetMapping("/buffetForm/{id}")
+	public String getPersona(Model model) {
+		model.addAttribute("buffet", new Buffet());
+		return "buffetForm.html";
+	}
+}

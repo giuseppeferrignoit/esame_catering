@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Gestione persona</title>
+</head>
+
+<body>
+	<div>
+    	<h1>Operazioni</h1>
+		<div>
+			<a  th:href="@{/personaForm}">Inserisci persona</a>
+	   	</div>
+	
+		<div>
+			<a  th:href="@{/persona}"></a>
+	   	</div>
+	</div>
+</body>
+</html>

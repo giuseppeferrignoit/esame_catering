@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+ 
+<html> 
+	<head>  
+	    <meta charset="ISO-8859-1" />
+	    <title>Catering SRL - Gestione Buffet Spring - v02</title>
+	    
+		<link rel="stylesheet" href="menu.css"/>
+		<meta name="viewport"
+		content="width=device-width, initial-scale=1">
+	</head> 
+	 
+	
+	<body> 
+	<header> 
+		<div id="titolo"><strong class="titolo"> MENU CATERING SRL - Spring - v00</strong></div>
+	</header>
+	
+    <form action="menu" method="post"> 
+       	<div><button type="submit" name="chef" value="chef" /></div>
+        <div><button type="submit" name="buffet" value="buffet" /></div>
+        <div><button type="submit" name="piatto" value="piatto" /></div>
+        <div><button type="submit" name="ingrediente" value="ingrediente" /></div>
+    </form>
+    
+</body>
+</html>

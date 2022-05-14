@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="buffetForm.css"/>	
+	<title>Inserimento buffet</title>
+</head>
+
+<body>
+	<header> 
+		<div id="titolo"><strong class="titolo">Catering SRL - Inserimento dati buffet</strong></div>
+	</header>
+	<form th:action="@{/buffet}" method="POST" th:object="${buffet}">
+		<div>Nome: <input type="text" th.field="*{nome}"/></div>
+		<div>Descrizione: <input type="text" th.field="*{descrizione}"/></div>
+		<div><button type="submit">Conferma</button></div>
+	</form>
+</body>
+
+</html>
