@@ -6,7 +6,7 @@ import it.uniroma3.catering.model.Chef;
 
 public interface ChefRepository extends CrudRepository<Chef, Long> {
 	
-	public Chef findByNome(String nomeChef);
+	public Chef findByCognome(String cognomeChef);
 
 
 }

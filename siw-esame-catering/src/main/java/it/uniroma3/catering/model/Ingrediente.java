@@ -29,6 +29,14 @@ public class Ingrediente {
 	private Piatto piatto;
 	
 	//--------------------------------
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public Long getId() {
+		return id;
+	}
 
 	public Piatto getPiatto() {
 		return piatto;
@@ -62,7 +70,4 @@ public class Ingrediente {
 		this.descrizione = descrizione;
 	}
 
-	public Long getId() {
-		return id;
-	}
 }

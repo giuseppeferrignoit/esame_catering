@@ -1,11 +1,11 @@
 <!DOCTYPE html>
  
-<html> 
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>  
 	    <meta charset="ISO-8859-1" />
-	    <title>Catering SRL - Gestione Buffet Spring - v02</title>
+	    <title>Operazioni Catering SRL</title>
 	    
-		<link rel="stylesheet" href="menu.css"/>
+		<link rel="stylesheet" href="main.css"/>
 		<meta name="viewport"
 		content="width=device-width, initial-scale=1">
 	</head> 
@@ -13,15 +13,19 @@
 	
 	<body> 
 	<header> 
-		<div id="titolo"><strong class="titolo"> MENU CATERING SRL - Spring - v00</strong></div>
+		<div id="titolo"><strong class="titolo"> OPERAZIONI CATERING SRL</strong></div>
 	</header>
     
-    <form action="menu" method="post"> 
-       	<div><input type="submit" name="inserimento_chef" value="inserimento_chef" /></div>
-        <div><input type="submit" name="inserimento_buffet" value="inserimento_buffet" /></div>
-        <div><input type="submit" name="inserimento_piatto" value="inserimento_piatto" /></div>
-        <div><input type="submit" name="inserimento_ingrediente" value="inserimento_ingrediente" /></div>
-    </form>
-    
+	<div>
+    	<p class="itemMain"><a th:href="@{/buffetForm}">
+    				<strong>Inserimento nuovo buffet</strong></a></p>
+    	<p class="itemMain"><a th:href="@{/chefForm}">
+    				<strong>Inserimento nuovo chef</strong></a></p>
+    	<p class="itemMain"><a th:href="@{/piattoForm}">
+    				<strong>Inserimento nuovo piatto</strong></a></p>
+    	<p class="itemMain"><a th:href="@{/ingredienteForm}">
+    				<strong>Inserimento nuovo ingrediente</strong></a></p>
+	</div>
+  
 </body>
 </html>

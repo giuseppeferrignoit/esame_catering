@@ -10,18 +10,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@ NamedQuery (name =  "findAllPiatti", query = "SELECT p FROM Piatto p")
 public class Piatto {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	
+
 	@NotBlank
 	@Column(unique=true)
 	private String nome;
@@ -37,6 +35,14 @@ public class Piatto {
 	private List<Ingrediente> ingredienti;
 	
 	//-----------------------------
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public List<Ingrediente> getIngredienti() {
 		return ingredienti;
@@ -70,7 +76,5 @@ public class Piatto {
 		this.descrizione = descrizione;
 	}
 
-	public Long getId() {
-		return id;
-	}
+	
 }

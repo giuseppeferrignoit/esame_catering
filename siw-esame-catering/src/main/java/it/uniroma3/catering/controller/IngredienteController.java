@@ -80,7 +80,7 @@ public class IngredienteController {
 		return "ingredienti.html";
 	}
 	
-	@GetMapping("/ingredienteForm/{id}")
+	@GetMapping("/ingredienteForm")
 	public String getIngrediente(Model model) {
 		model.addAttribute("ingrediente", new Ingrediente());
 		return "ingredienteForm.html";

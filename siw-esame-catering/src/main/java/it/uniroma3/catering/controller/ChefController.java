@@ -80,7 +80,7 @@ public class ChefController {
 		return "chefs.html";
 	}
 	
-	@GetMapping("/chefForm/{id}")
+	@GetMapping("/chefForm")
 	public String getChef(Model model) {
 		model.addAttribute("chef", new Chef());
 		return "chefForm.html";

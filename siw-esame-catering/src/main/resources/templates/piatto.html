@@ -3,22 +3,21 @@
 
 <head>  	
 	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="buffet.css"/>    
-	<title>Dettagli buffet</title>
+	<link rel="stylesheet" href="piatto.css"/>    
+	<title>Dettagli piatto</title>
 </head> 
 
 <body>
 	<header> 
-		<div id="titolo"><strong class="titolo"> Dettagli buffet</strong></div>
+		<div id="titolo"><strong class="titolo"> Dettagli piatto</strong></div>
 	</header>
 	
 	<div>
-		<p th:text="${buffet.nome}">Buffet generico</p>
-		<p th:text="${buffet.descrizione}">Descrizione generica</p>
+		<p th:text="${piatto.nome}">Nome generico</p>
+		<p th:text="${piatto.descrizione}">Descrizione generica</p>
    	</div>
 
     <footer><a href="/">Home</a></footer>
-
 </body>
 
 </html>

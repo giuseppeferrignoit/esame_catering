@@ -7,12 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@ NamedQuery (name =  "findAllChefs", query = "SELECT c FROM Chef c")
 public class Chef {
 	
 	@Id
@@ -34,6 +32,14 @@ public class Chef {
 	
 	
 	//-------------------------------
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public List<Buffet> getBuffet() {
 		return buffet;
@@ -65,9 +71,5 @@ public class Chef {
 
 	public void setNazionalita(String nazionalita) {
 		this.nazionalita = nazionalita;
-	}
-
-	public Long getId() {
-		return id;
 	}
 }

@@ -68,7 +68,7 @@ public class BuffetController {
 	
 	// richiede un singolo buffet tramite id
 	@GetMapping("/buffet/{id}")
-	public String getBuffet(@PathVariable("id")Long id, Model model) { 
+	public String getBuffet(@PathVariable("id") Long id, Model model) { 
 		// id è una variabile associata al path
 		Buffet buffet = buffetService.findById(id);
 		model.addAttribute("buffet", buffet);
@@ -84,7 +84,7 @@ public class BuffetController {
 		return "buffets.html";
 	}
 	
-	@GetMapping("/buffetForm/{id}")
+	@GetMapping("/buffetForm")
 	public String getBuffet(Model model) {
 		model.addAttribute("buffet", new Buffet());
 		return "buffetForm.html";

@@ -8,5 +8,4 @@ public interface PiattoRepository extends CrudRepository<Piatto, Long> {
 	
 	public Piatto findByNome(String nomePiatto);
 
-
 }

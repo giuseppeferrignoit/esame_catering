@@ -3,16 +3,16 @@
 
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="buffetForm.css"/>	
-	<title>Inserimento buffet</title>
+	<link rel="stylesheet" href="chefForm.css"/>	
+	<title>Inserimento ingrediente</title>
 </head>
 
 <body>
 	<header> 
-		<div id="titolo"><strong class="titolo">Catering SRL - Inserimento dati buffet</strong></div>
+		<div id="titolo"><strong class="titolo">Catering SRL - Inserimento dati ingrediente</strong></div>
 	</header>
 	
-	<form th:action="@{/buffet}" method="POST" th:object="${buffet}">
+	<form th:action="@{/ingrediente}" method="POST" th:object="${ingrediente}">
 	
 		<div th:if="${#fields.hasGlobalErrors()}">
     		<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
@@ -22,6 +22,12 @@
 			<span>Nome: </span>
 			<span><input type="text" th.field="*{nome}"/></span>
 			<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+		</div>
+		
+		<div>
+			<span>Origine: </span>
+			<span><input type="text" th.field="*{origine}"/></span>		
+			<span th:if="${#fields.hasErrors('origine')}" th:errors="*{origine}"></span>
 		</div>
 		
 		<div>

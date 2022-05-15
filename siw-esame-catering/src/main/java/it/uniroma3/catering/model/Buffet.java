@@ -10,12 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@ NamedQuery (name =  "findAllBuffets", query = "SELECT b FROM Buffet b")
 public class Buffet {
 	
 	@Id
@@ -37,6 +35,14 @@ public class Buffet {
 	private List<Piatto> piatti;
 	
 	//-------------------------------
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public List<Piatto> getPiatti() {
 		return piatti;
@@ -62,10 +68,6 @@ public class Buffet {
 		this.descrizione = descrizione;
 	}
 
-	public Long getId() {
-		return id;
-	}
-	
 	public Chef getChef() {
 		return chef;
 	}

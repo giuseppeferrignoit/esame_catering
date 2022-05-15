@@ -3,16 +3,16 @@
 
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="buffetForm.css"/>	
-	<title>Inserimento buffet</title>
+	<link rel="stylesheet" href="chefForm.css"/>	
+	<title>Inserimento piatto</title>
 </head>
 
 <body>
 	<header> 
-		<div id="titolo"><strong class="titolo">Catering SRL - Inserimento dati buffet</strong></div>
+		<div id="titolo"><strong class="titolo">Catering SRL - Inserimento dati piatto</strong></div>
 	</header>
 	
-	<form th:action="@{/buffet}" method="POST" th:object="${buffet}">
+	<form th:action="@{/piatto}" method="POST" th:object="${piatto}">
 	
 		<div th:if="${#fields.hasGlobalErrors()}">
     		<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
