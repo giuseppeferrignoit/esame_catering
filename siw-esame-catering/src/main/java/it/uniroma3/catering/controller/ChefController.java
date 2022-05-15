@@ -34,9 +34,9 @@ public class ChefController {
 	// METODO POST PER INSERIRE UN NUOVO BUFFET
 
 	@PostMapping("/chef")
-	public String newChef(@Valid @ModelAttribute("chef") Chef chef, Model model,
-			BindingResult bindingResult) {
-		
+	public String addChef(@Valid @ModelAttribute(value="chef") Chef chef, 
+			BindingResult bindingResult, Model model) {
+
 		/* Se non ci sono errori inserisce la ricorrenza di chef 
 		 * tramite la save del service 
 		 * */

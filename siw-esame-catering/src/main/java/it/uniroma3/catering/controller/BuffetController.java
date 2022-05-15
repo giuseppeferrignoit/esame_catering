@@ -34,8 +34,8 @@ public class BuffetController {
 	// METODO POST PER INSERIRE UN NUOVO BUFFET
 	
 	@PostMapping("/buffet")
-	public String newBuffet(@Valid @ModelAttribute("buffet") Buffet buffet, Model model,
-			BindingResult bindingResult) {
+	public String addBuffet(@Valid @ModelAttribute(value="buffet") Buffet buffet, 
+			BindingResult bindingResult, Model model) {
 		
 		// Creo una entità Buffet dai dati di input della stringa HTTP usando i metodi Get
 		// I risultati della validazione sono riportati in BindingResult

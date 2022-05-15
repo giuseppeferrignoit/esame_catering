@@ -34,8 +34,8 @@ public class IngredienteController {
 	// METODO POST PER INSERIRE UN NUOVO INGREDIENTE
 
 	@PostMapping("/ingrediente")
-	public String newIngrediente(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, Model model,
-			BindingResult bindingResult) {
+	public String addIngrediente(@Valid @ModelAttribute(value="ingrediente") Ingrediente ingrediente, 
+			BindingResult bindingResult, Model model) {
 		
 		/* Se non ci sono errori inserisce la ricorrenza di ingrediente 
 		 * tramite la save del service 
