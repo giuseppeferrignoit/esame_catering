@@ -27,7 +27,7 @@ public class Chef {
 	@NotBlank	
 	private String nazionalita;
 	
-	@OneToMany(mappedBy="chef")
+	@OneToMany(mappedBy="chefId")
 	private List<Buffet> buffet;
 	
 	

@@ -27,6 +27,7 @@ public class Buffet {
 	@NotBlank	
 	private String descrizione;
 	
+	@NotBlank
 	@ManyToOne
 	private Chef chef;
 

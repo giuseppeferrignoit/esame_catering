@@ -20,13 +20,13 @@
 
 		<div>
 			<span>Nome: </span>
-			<span><input type="text" th.field="*{nome}"/></span>
+			<span><input type="text" th:field="*{nome}"/></span>
 			<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
 		</div>
 		
 		<div>
 			<span>Descrizione: </span>
-			<span><input type="text" th.field="*{descrizione}"/></span>		
+			<span><input type="text" th:field="*{descrizione}"/></span>		
 			<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
 		</div>
 		

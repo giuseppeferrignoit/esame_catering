@@ -68,12 +68,10 @@ public class BuffetController {
 	
 	// richiede un singolo buffet tramite id
 	@GetMapping("/buffet/{id}")
-	public String getBuffet(@PathVariable("id") Long id, Model model) { 
-		// id è una variabile associata al path
+	public String getBuffet(@PathVariable("id") Long id, Model model) { // id è una variabile associata al path
 		Buffet buffet = buffetService.findById(id);
 		model.addAttribute("buffet", buffet);
-		// ritorna la form con i dati dell'entità richiesta
-		return "buffet.html"; 
+		return "buffet.html"; // ritorna la form con i dati dell'entità richiesta
 	}
 	
 	// richiede tutti i buffets, non c'è id

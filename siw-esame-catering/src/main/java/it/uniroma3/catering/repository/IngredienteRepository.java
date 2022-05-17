@@ -6,7 +6,6 @@ import it.uniroma3.catering.model.Ingrediente;
 
 public interface IngredienteRepository extends CrudRepository<Ingrediente, Long> {
 	
-	public Ingrediente findByNome(String nomeIngrediente);
 
 
 }
