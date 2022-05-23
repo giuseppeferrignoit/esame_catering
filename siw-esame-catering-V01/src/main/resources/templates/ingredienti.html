@@ -17,16 +17,18 @@
 	<div class="sezione">		
 		<ul>
 			<li th:each="ingrediente : ${ingredienti}">
+			<p class="desc">
 				<span>
 					<a href="ingrediente.html"
 					th:href="@{'/ingrediente' + '/' + ${ingrediente.id}}"
-					th:text="${ingrediente.nome} + ' ' + ${ingrediente.origine} + ' ' + ${ingrediente.descrizione}">Ingrediente generico</a>
+					th:text="${ingrediente.nome} + ' - ' + ${ingrediente.origine} + ' ' + ${ingrediente.descrizione}">Ingrediente generico</a>
 				</span>
 				<span>
 					<a href="confermaDeleteIngrediente.html"
 					th:href="@{'/confermaDeleteIngrediente' + '/' + ${ingrediente.id}}"
-					th:text="cancella"><strong class="cancellazione">Cancella</strong></a>
+					th:text="cancella"><strong>Cancella</strong></a>
 				</span>
+			</p>
 			</li>
 		</ul>
     </div>

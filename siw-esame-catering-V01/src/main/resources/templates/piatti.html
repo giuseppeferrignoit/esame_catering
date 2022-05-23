@@ -17,16 +17,19 @@
 	<div class="sezione">		
 		<ul>
 			<li th:each="piatto : ${piatti}">
-				<span>
-					<a href="piatto.html"
-					th:href="@{'/piatto' + '/' + ${piatto.id}}"
-					th:text="${piatto.nome} + ' ' + ${piatto.descrizione}"> Piatto generico</a>
-				</span>
-				<span>
-					<a href="confermaDeletePiatto.html"
-					th:href="@{'/confermaDeletePiatto' + '/' + ${piatto.id}}"
-					th:text="cancella"><strong class="cancellazione">Cancella</strong></a>
-				</span>
+				<p class="desc">
+					<span>
+						<a href="piatto.html"
+						th:href="@{'/piatto' + '/' + ${piatto.id}}"
+						th:text="${piatto.nome} + ' - ' + ${piatto.descrizione}"> Piatto generico</a>
+					</span>
+					<span>
+						<a href="confermaDeletePiatto.html"
+						th:href="@{'/confermaDeletePiatto' + '/' + ${piatto.id}}"
+						th:text="cancella"><strong>Cancella</strong></a>
+					</span>
+				</p>
+				
 			</li>
 		</ul>
     </div>
