@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>  	
+		<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="chef.css"/>    
+		<title>Dettagli chef</title>
+	</head> 
+	<body>
+		<header> 
+			<div id="titolo"><strong class="titolo"> Dettagli chef</strong></div>
+		</header>
+		
+		<div class="sezione">
+			<p class="desc">
+				<span >Nome chef: </span>
+				<span th:text="${chef.nome}">Nome generico</span>
+			</p>
+			<p class="desc">
+				<span>Cognome chef: </span>
+				<span  th:text="${chef.cognome}">Cognome generico</span>
+			</p>
+			<p class="desc">
+				<span>Nazionalità chef: </span>
+				<span  th:text="${chef.nazionalita}">Nazionalita generica</span>
+			</p>
+	   	</div>
+	
+		<div class="sezione">
+			<a href="/"><strong class="top">Home</strong></a>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>  
+	    <meta charset="ISO-8859-1" />
+	    <title>Conferma Delete</title>
+		<link rel="stylesheet" href="confermaDeletePiatto.css"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+
+	<body>
+	
+	<header> 
+		<div id="titolo"><strong class="titolo">CONFERMA DELETE DI UN PIATTO</strong></div>
+	</header>
+
+	<div>
+		<a href="piatto.html"
+		th:href="@{'/piatto' + '/' + ${piatto.id}}"
+		th:text="${piatto.nome} + ' ' + ${piatto.descrizione}"> Piatto Generico</a>
+	</div>
+	<div>
+		<a href="deletePiatto.html"
+		th:href="@{'/deletePiatto' + '/' + ${piatto.id}}"
+		th:text="conferma"><strong class="cancellazione">Conferma</strong></a>
+	</div>
+
+	<div class="sezione">
+		<a href="/"><strong class="top">Home</strong></a>
+	</div>
+
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>  
+	    <meta charset="ISO-8859-1" />
+	    <title>Dati cancellati</title>
+		<link rel="stylesheet" href="buffetDelete.css"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+
+	<body>
+	
+	<header> 
+		<div id="titolo"><strong class="titolo">PIATTO CANCELLATO</strong></div>
+	</header>
+	
+	<div class="sezione">		
+		<span th:text="${piatto.nome}">Bolognese</span>
+		<span th:text="${piatto.descrizione}">Ragu bolognese italiano</span>
+   	</div>
+
+	<div class="sezione">
+		<a href="/"><strong class="top">Home</strong></a>
+	</div>
+
+	</body>
+</html>
