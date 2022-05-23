@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>  
+	    <meta charset="ISO-8859-1" />
+	    <title>Conferma Delete</title>
+		<link rel="stylesheet" href="confermaDeleteBuffet.css"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+
+	<body>
+	
+	<header> 
+		<div id="titolo"><strong class="titolo">CONFERMA DELETE DI UN BUFFET</strong></div>
+	</header>
+
+	<div>
+		<a href="buffet.html"
+		th:href="@{'/buffet' + '/' + ${buffet.id}}"
+		th:text="${buffet.nome} + ' ' + ${buffet.descrizione}"> Buffet Generico</a>
+	</div>
+	<div>
+		<a href="deleteBuffet.html"
+		th:href="@{'/deleteBuffet' + '/' + ${buffet.id}}"
+		th:text="conferma"><strong class="cancellazione">Conferma</strong></a>
+	</div>
+
+	<div class="sezione">
+		<a href="/"><strong class="top">Home</strong></a>
+	</div>
+
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>  
+    <meta charset="ISO-8859-1" />
+    <title>Elenco ingredienti</title>
+	<link rel="stylesheet" href="ingredienti.css"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	
+	<header> 
+		<div id="titolo"><strong class="titolo">ELENCO INGREDIENTI A SISTEMA</strong></div>
+	</header>
+	
+	<div class="sezione">		
+		<ul>
+			<li th:each="ingrediente : ${ingredienti}">
+			<p class="desc">
+				<span>
+					<a href="ingrediente.html"
+					th:href="@{'/ingrediente' + '/' + ${ingrediente.id}}"
+					th:text="${ingrediente.nome} + ' - ' + ${ingrediente.origine} + ' ' + ${ingrediente.descrizione}">Ingrediente generico</a>
+				</span>
+				<span>
+					<a href="confermaDeleteIngrediente.html"
+					th:href="@{'/confermaDeleteIngrediente' + '/' + ${ingrediente.id}}"
+					th:text="cancella"><strong>Cancella</strong></a>
+				</span>
+			</p>
+			</li>
+		</ul>
+    </div>
+
+	<div class="sezione">
+		<a href="/"><strong class="top">Home</strong></a>
+	</div>
+
+</body>
+</html>
