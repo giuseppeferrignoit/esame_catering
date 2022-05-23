@@ -3,7 +3,7 @@
 
 <head>  	
 	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="buffet.css"/>    
+	<link rel="stylesheet" th:href="elenco.css"/>    
 	<title>Elenco</title>
 </head> 
 
@@ -11,10 +11,14 @@
 	<header> 
 		<div id="titolo"><strong class="titolo"> Elenco chef</strong></div>
 	</header>
-	
-	
+	<ul>
+		<li th:each="chef: ${chefs}">
+			<a href="chef.html" th:href="@{'/chef' + '/' + ${chef.id}}"
+			   th:text="${chef.nome} + ' ' + ${chef.cognome}">Paolo Rossi</a>
+		</li>	   	
+	</ul>
 
-    <footer><a href="/">Home</a></footer>
+ � <footer><a href="/">Home</a></footer>
 
 </body>
 

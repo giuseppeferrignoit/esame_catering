@@ -1,5 +1,6 @@
 package it.uniroma3.catering.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -8,9 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
 
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"nome", "cognome"}))
 public class Chef {
 	
 	@Id
@@ -21,17 +25,20 @@ public class Chef {
 	private String nome;
 	
 	@NotBlank	
-	@Column(unique=true)
 	private String cognome;
 	
 	@NotBlank	
 	private String nazionalita;
 	
-	@OneToMany(mappedBy="chefId")
+	@OneToMany(mappedBy="chef")
 	private List<Buffet> buffet;
 	
 	
 	//-------------------------------
+	
+	public Chef() {
+		this.buffet = new ArrayList<Buffet>();
+	}
 	
 	public Long getId() {
 		return id;
@@ -47,6 +54,10 @@ public class Chef {
 
 	public void setBuffet(List<Buffet> buffet) {
 		this.buffet = buffet;
+	}
+	
+	public void addBuffet(Buffet buffet) {
+		this.buffet.add(buffet);
 	}
 
 	public String getNome() {
@@ -72,4 +83,26 @@ public class Chef {
 	public void setNazionalita(String nazionalita) {
 		this.nazionalita = nazionalita;
 	}
+	
+	@Override
+	public int hashCode() {
+		return this.nome.hashCode() + this.cognome.hashCode()
+		     + this.nazionalita.hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj.getClass() != Chef.class)
+			return false;
+		Chef that = (Chef) obj;
+		return this.nome.equals(that.getNome()) &&
+		       this.cognome.equals(that.getCognome()) &&
+		       this.nazionalita.equals(that.getNazionalita());
+	}
+	
+	@Override
+	public String toString() {
+		return this.nome + " " + this.cognome;
+	}
+	
 }

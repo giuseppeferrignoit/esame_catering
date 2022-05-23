@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>  	
+	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="elenco.css"/>    
+	<title>Aggiungi ingredienti</title>
+</head> 
+
+<body>
+	<header> 
+		<div id="titolo"><strong class="titolo"> Dettagli piatto</strong></div>
+	</header>
+	
+	<div>
+		<div>Nome: <span th:text="${piatto.nome}">Piatto generico</span></div>
+		<div>Descrizione: <span th:text="${piatto.descrizione}">Descrizione generica</span></div>
+		<div th:if="${!piatto.ingredienti.empty}">Ingredienti presenti nel piatto:
+			<ul>
+				<li th:each="ingrediente: ${piatto.ingredienti}">
+					<a href="ingrediente.html" th:href="@{'/ingrediente' + '/' + ${ingrediente.id}}"
+					   th:text="${ingrediente.nome}">Ingrediente</a>
+				</li>	   	
+			</ul>
+		</div>
+		<div th:if="${!ingredientiAssenti.empty}">Vuoi aggiungere uno dei seguenti ingredienti al piatto?</div>
+		<ul>
+			<li th:each="ingrediente: ${ingredientiAssenti}">
+				<a href="ingrediente.html" th:href="@{'/ingrediente' + '/' + ${ingrediente.id}}"
+				   th:text="${ingrediente.nome}">Ingrediente</a>
+				<a href="#" th:href="@{'/piatto' + '/' + ${piatto.id} + '/' + ${ingrediente.id}}">Aggiungi al piatto</a>
+			</li>	   	
+		</ul>
+	</div>
+	<div>
+		<a href="piatto.html" th:href="@{'/piatto' + '/' + ${piatto.id}}">Conferma</a>
+	</div>
+
+    <footer><a href="/">Home</a></footer>
+
+</body>
+
+</html>

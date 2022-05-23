@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import it.uniroma3.catering.model.Ingrediente;
 import it.uniroma3.catering.model.Piatto;
+import it.uniroma3.catering.service.IngredienteService;
 import it.uniroma3.catering.service.PiattoService;
 import it.uniroma3.catering.validator.PiattoValidator;
 
@@ -22,6 +24,9 @@ public class PiattoController {
 	
 	@Autowired
 	private PiattoService piattoService;
+	
+	@Autowired
+	private IngredienteService ingredienteService;
 	
 	@Autowired
 	private PiattoValidator piattoValidator;
@@ -50,10 +55,10 @@ public class PiattoController {
 			
 			this.piattoService.save(piatto); // salvo un oggetto Piatto
 			model.addAttribute("piatto", piattoService.findById(piatto.getId()));
-			
+			model.addAttribute("ingredientiAssenti", this.ingredienteService.findIngredientiNotInPiatto(piatto));
 			// Ogni metodo ritorna la stringa col nome della vista successiva
 			// se NON ci sono errori si va alla form di visualizzazione dati inseriti
-			return "piatto.html"; 
+			return "addIngredientiToPiatto.html"; 
 		}
 		else
 			// se ci sono errori si rimanda alla form di inserimento
@@ -61,7 +66,19 @@ public class PiattoController {
 	}
 
 	// METODI GET
-
+	
+	@GetMapping("/piatto/{idPiatto}/{idIngrediente}")
+	public String addPiatto(@PathVariable("idPiatto") Long idPiatto,
+			@PathVariable("idIngrediente") Long idIngrediente, Model model) {
+		Piatto piatto = this.piattoService.findById(idPiatto);
+		Ingrediente ingrediente = this.ingredienteService.findById(idIngrediente);
+		this.piattoService.addIngrediente(piatto, ingrediente);
+		model.addAttribute("piatto", piatto);
+		model.addAttribute("ingredientiAssenti", this.ingredienteService.findIngredientiNotInPiatto(piatto));
+		return "addIngredientiToPiatto.html";
+	}
+	
+	
 	// richiede un singolo chef tramite id
 	@GetMapping("/piatto/{id}")
 	public String getPiatto(@PathVariable("id")Long id, Model model) {

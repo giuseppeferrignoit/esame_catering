@@ -1,5 +1,6 @@
 package it.uniroma3.catering.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,8 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -27,15 +28,19 @@ public class Buffet {
 	@NotBlank	
 	private String descrizione;
 	
-	@NotBlank
+	//@NotBlank
 	@ManyToOne
 	private Chef chef;
 
-	@OneToMany(fetch=FetchType.EAGER, cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, 
-				mappedBy="buffet")
+	
+	@ManyToMany(fetch=FetchType.EAGER, cascade= {CascadeType.ALL})
 	private List<Piatto> piatti;
 	
 	//-------------------------------
+	
+	public Buffet() {
+		this.piatti = new ArrayList<Piatto>();
+	}
 	
 	public Long getId() {
 		return id;
@@ -51,6 +56,10 @@ public class Buffet {
 
 	public void setPiatti(List<Piatto> piatti) {
 		this.piatti = piatti;
+	}
+	
+	public void addPiatto(Piatto piatto) {
+		this.piatti.add(piatto);
 	}
 
 	public String getNome() {
@@ -75,6 +84,19 @@ public class Buffet {
 
 	public void setChef(Chef chef) {
 		this.chef = chef;
+	}
+	
+	@Override
+	public int hashCode() {
+		return this.nome.hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj.getClass() != Buffet.class)
+			return false;
+		Buffet that = (Buffet)obj;
+		return this.nome.equals(that.getNome());
 	}
 	
 }

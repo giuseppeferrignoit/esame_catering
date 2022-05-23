@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.catering.model.Buffet;
+import it.uniroma3.catering.model.Piatto;
 import it.uniroma3.catering.service.BuffetService;
+import it.uniroma3.catering.service.ChefService;
+import it.uniroma3.catering.service.PiattoService;
 import it.uniroma3.catering.validator.BuffetValidator;
 
 @Controller
@@ -26,6 +29,12 @@ public class BuffetController {
 	@Autowired
 	private BuffetValidator buffetValidator;
 	
+	@Autowired
+	private ChefService chefService;
+	
+	@Autowired
+	private PiattoService piattoService;
+	
 	/*
 	 * convenzione: get per le operazioni di lettura, post per gli aggiornamenti
 	 * il path è associato alle classi del dominio
@@ -33,8 +42,8 @@ public class BuffetController {
 	
 	// METODO POST PER INSERIRE UN NUOVO BUFFET
 	
-	@PostMapping("/buffet")
-	public String addBuffet(@Valid @ModelAttribute(value="buffet") Buffet buffet, 
+	@PostMapping("/chef/{idChef}/buffet")
+	public String addBuffet(@Valid @ModelAttribute(value="buffet") Buffet buffet, @PathVariable("idChef") Long idChef,
 			BindingResult bindingResult, Model model) {
 		
 		// Creo una entità Buffet dai dati di input della stringa HTTP usando i metodi Get
@@ -50,14 +59,13 @@ public class BuffetController {
 		this.buffetValidator.validate(buffet, bindingResult);
 		
 		if (!bindingResult.hasErrors()) { 
-			
 			// Se non ci sono errori
-			this.buffetService.save(buffet); // Salvo un oggetto Buffet
+			this.buffetService.save(buffet, chefService.findById(idChef));
 			model.addAttribute("buffet", this.buffetService.findById(buffet.getId()));
-			
+			model.addAttribute("piattiAssenti", this.piattoService.findPiattiNotInBuffet(buffet));
 			// Ogni metodo ritorna la stringa col nome della vista successiva
 			// se NON ci sono errori si va alla form di visualizzazione dati inseriti
-			return "buffet.html"; 
+			return "addPiattiToBuffet.html"; 
 		}
 		else
 			// se ci sono errori si rimanda alla form di inserimento
@@ -65,6 +73,17 @@ public class BuffetController {
 	}
 	
 	// METODI GET
+	
+	@GetMapping("/buffet/{idBuffet}/{idPiatto}")
+	public String addPiatto(@PathVariable("idBuffet") Long idBuffet, 
+		@PathVariable("idPiatto") Long idPiatto, Model model) {
+		Buffet buffet = this.buffetService.findById(idBuffet);
+		Piatto piatto = this.piattoService.findById(idPiatto);
+		this.buffetService.addPiatto(buffet, piatto);
+		model.addAttribute("buffet", buffet);
+		model.addAttribute("piattiAssenti", this.piattoService.findPiattiNotInBuffet(buffet));
+		return "addPiattiToBuffet.html";
+	}
 	
 	// richiede un singolo buffet tramite id
 	@GetMapping("/buffet/{id}")
@@ -82,9 +101,11 @@ public class BuffetController {
 		return "buffets.html";
 	}
 	
-	@GetMapping("/buffetForm")
-	public String getBuffet(Model model) {
-		model.addAttribute("buffet", new Buffet());
+	@GetMapping("/chef/{idChef}/nuovoBuffet")
+	public String createBuffet(@PathVariable("idChef") Long idChef, Model model) {
+		Buffet buffet = new Buffet();
+		model.addAttribute("chef", chefService.findById(idChef));
+		model.addAttribute("buffet", buffet);
 		return "buffetForm.html";
 	}
 }

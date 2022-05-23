@@ -3,7 +3,7 @@
 
 <head>  	
 	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="piatto.css"/>    
+	<link rel="stylesheet" href="elenco.css"/>    
 	<title>Dettagli piatto</title>
 </head> 
 
@@ -15,9 +15,17 @@
 	<div>
 		<p th:text="${piatto.nome}">Nome generico</p>
 		<p th:text="${piatto.descrizione}">Descrizione generica</p>
-   	</div>
+		<p>Ingredienti presenti nel piatto:</p>
+		<ul>
+			<li th:each="ingrediente: ${piatto.ingredienti}">
+				<a href="ingrediente.html" th:href="@{'/ingrediente' + '/' + ${ingrediente.id}}"
+				   th:text="${ingrediente.nome}">Ingrediente</a>
+			</li>	   	
+		</ul>
+� 	</div>
+	
 
-    <footer><a href="/">Home</a></footer>
+  � <footer><a href="/">Home</a></footer>
 </body>
 
 </html>

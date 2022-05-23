@@ -43,6 +43,7 @@ public class ChefService {
 	
 	// Metodo che risponde ad una validazione del Validator
 	public boolean alreadyExists(Chef chef) {
-		return this.findAll().contains(chef);
+		return chefRepository.existsByNomeAndCognomeAndNazionalita
+				(chef.getNome(), chef.getCognome(), chef.getNazionalita());
 	}
 }

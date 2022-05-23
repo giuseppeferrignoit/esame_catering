@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.catering.model.Buffet;
+import it.uniroma3.catering.model.Chef;
+import it.uniroma3.catering.model.Piatto;
 import it.uniroma3.catering.repository.BuffetRepository;
 
 @Service
@@ -18,8 +20,10 @@ public class BuffetService {
 	private BuffetRepository buffetRepository;
 	
 	@Transactional
-	public void save(Buffet buffet) { 
+	public void save(Buffet buffet, Chef chef) { 
 		// Il save è di tipo transactional
+		buffet.setChef(chef);
+		chef.addBuffet(buffet);
 		buffetRepository.save(buffet);
 	}
 	
@@ -43,6 +47,21 @@ public class BuffetService {
 	
 	// Metodo che risponde ad una validazione del Validator
 	public boolean alreadyExists(Buffet buffet) {
-		return this.findAll().contains(buffet);
+		return buffetRepository.existsByNome(buffet.getNome());
 	}
+	
+	public List<Buffet> findAllByChef(Chef chef) {
+		List<Buffet> buffets = new ArrayList<Buffet>();
+		for(Buffet b : buffetRepository.findAllByChef(chef)) {
+			buffets.add(b);
+		}
+		return buffets;
+	}
+	
+	@Transactional
+	public void addPiatto(Buffet buffet, Piatto piatto) {
+		buffet.addPiatto(piatto);
+		buffetRepository.save(buffet);
+	}
+	
 }

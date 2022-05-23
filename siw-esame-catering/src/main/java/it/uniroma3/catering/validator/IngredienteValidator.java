@@ -12,7 +12,6 @@ import it.uniroma3.catering.service.IngredienteService;
 @Component
 public class IngredienteValidator implements Validator {
 
-	@SuppressWarnings("unused")
 	@Autowired
 	private IngredienteService ingredienteService;
 	
@@ -20,7 +19,11 @@ public class IngredienteValidator implements Validator {
 	// Una specifica validazione per non duplicati
 	// In questo caso per gli ingredienti non facciamo nessun controllo di duplicazione
 	@Override
-	public void validate(Object o, Errors errors) {}
+	public void validate(Object o, Errors errors) {
+		if(this.ingredienteService.alreadyExists((Ingrediente)o)) {
+			errors.reject("ingrediente.duplicato");
+		}
+	}
 	
 	
 	// Indica quale è la classe su cui facciamo le validazioni

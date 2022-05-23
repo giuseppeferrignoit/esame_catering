@@ -3,7 +3,7 @@
 
 <head>  	
 	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="buffet.css"/>    
+	<link rel="stylesheet" href="elenco.css"/>    
 	<title>Dettagli buffet</title>
 </head> 
 
@@ -15,10 +15,17 @@
 	<div>
 		<p th:text="${buffet.nome}">Buffet generico</p>
 		<p th:text="${buffet.descrizione}">Descrizione generica</p>
-		<p th:text="${buffet.chefId}">Id chef generico</p>
-   	</div>
+		<p><a th:text="${buffet.chef}" th:href="@{'/chef' + '/' + ${buffet.chef.id}}">Chef</a></p>
+		<p>Piatti presenti nel buffet:</p>
+		<ul>
+			<li th:each="piatto: ${buffet.piatti}">
+				<a href="piatto.html" th:href="@{'/piatto' + '/' + ${piatto.id}}"
+				   th:text="${piatto.nome}">Piatto</a>
+			</li>	   	
+		</ul>
+� 	</div>
 
-    <footer><a href="/">Home</a></footer>
+  � <footer><a href="/">Home</a></footer>
 
 </body>
 

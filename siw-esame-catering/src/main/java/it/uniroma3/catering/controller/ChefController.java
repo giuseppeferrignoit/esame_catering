@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.catering.model.Chef;
+import it.uniroma3.catering.service.BuffetService;
 import it.uniroma3.catering.service.ChefService;
 import it.uniroma3.catering.validator.ChefValidator;
 
@@ -25,6 +26,9 @@ public class ChefController {
 	
 	@Autowired
 	private ChefValidator chefValidator;
+	
+	@Autowired
+	private BuffetService buffetService;
 	
 	/*
 	 * convenzione: get per le operazioni di lettura, post per gli aggiornamenti
@@ -84,6 +88,13 @@ public class ChefController {
 	public String getChef(Model model) {
 		model.addAttribute("chef", new Chef());
 		return "chefForm.html";
+	}
+	
+	@GetMapping("/chef/{id}/buffets")
+	public String getBuffet(@Valid @PathVariable("id") Long id, Model model) {
+		Chef chef = chefService.findById(id);
+		model.addAttribute("buffets", buffetService.findAllByChef(chef));
+		return "buffets.html";
 	}
 }
 

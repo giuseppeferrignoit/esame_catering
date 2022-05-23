@@ -8,6 +8,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.uniroma3.catering.model.Buffet;
+import it.uniroma3.catering.model.Ingrediente;
 import it.uniroma3.catering.model.Piatto;
 import it.uniroma3.catering.repository.PiattoRepository;
 
@@ -43,6 +45,20 @@ public class PiattoService {
 	
 	// Metodo che risponde ad una validazione del Validator
 	public boolean alreadyExists(Piatto piatto) {
-		return this.findAll().contains(piatto);
+		return piattoRepository.existsByNome(piatto.getNome());
+	}
+	
+	public List<Piatto> findPiattiNotInBuffet(Buffet buffet) {
+		List<Piatto> piatti = this.findAll();
+		for (Piatto p : buffet.getPiatti()) {
+			piatti.remove(p);
+		}
+		return piatti;
+	}
+
+	@Transactional
+	public void addIngrediente(Piatto piatto, Ingrediente ingrediente) {
+		piatto.addIngrediente(ingrediente);
+		piattoRepository.save(piatto);
 	}
 }

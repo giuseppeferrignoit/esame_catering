@@ -3,7 +3,7 @@
 
 <head>  	
 	<meta charset="ISO-8859-1" name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="chef.css"/>    
+	<link rel="stylesheet" href="elenco.css"/>    
 	<title>Dettagli chef</title>
 </head> 
 
@@ -16,9 +16,11 @@
 		<p th:text="${chef.nome}">Nome generico</p>
 		<p th:text="${chef.cognome}">Cognome generico</p>
 		<p th:text="${chef.nazionalita}">Nazionalita generica</p>
-   	</div>
+		<p><a th:href="@{'/chef' + '/' + ${chef.id} + '/' + 'nuovoBuffet'}" href="#">Inserisci nuovo buffet</a></p>
+		<p><a th:href="@{'/chef' + '/' + ${chef.id} + '/' + 'buffets'}" href="#">Consulta buffet disponibili</a></p>
+� 	</div>
 
-    <footer><a href="/">Home</a></footer>
+  � <footer><a href="/">Home</a></footer>
 </body>
 
 </html>
